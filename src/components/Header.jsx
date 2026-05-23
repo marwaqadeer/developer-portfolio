@@ -1,0 +1,23 @@
+import { useState } from "react";
+
+function Header({message}) {
+    const quotes = [
+        "Code is like humor. When you have to explain it, it’s bad.",
+        "Success is built one line of code at a time.",
+        "Every great developer starts as a beginner.",
+    ];
+
+    const [randomQuote] = useState (
+    quotes[Math.floor(Math.random() * quotes.length)]
+    );
+
+    return (
+        <header className="header">
+            <h1>Hello, I'm Marwa 👋</h1>
+            <p>{message}</p>
+            <blockquote>"{randomQuote}"</blockquote>
+        </header>
+    );
+}
+
+export default Header;
