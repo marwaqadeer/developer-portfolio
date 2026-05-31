@@ -3,6 +3,8 @@ import { useState } from "react";
 function About () {
     const [showMore, setShowMore] = useState(false);
 
+    const [emoji, setEmoji] = useState("😊");
+
     const hobbies = [
         "Reading books",
         "Learning new technologies",
@@ -16,6 +18,23 @@ function About () {
             <h2>About Me</h2>
 
             <p>I am a BBA student who is also interested in learning coding. I enjoy exploring how websites and applications are built and I am currently improving my skills in frontend development. My goal is to become more confident in programming and build modern, responsive web applications using React.</p>
+
+            {/* Avatar Reaction Section */}
+            <div className="avatar-section">
+                <h3>{emoji}</h3>
+
+                <button onClick={() => setEmoji("😊")}>
+                    Happy
+                </button>
+
+                <button onClick={() => setEmoji("😎")}>
+                    Cool
+                </button>
+
+                <button onClick={() => setEmoji("🤩")}>
+                    Excited 
+                </button>
+            </div>
 
             <h3>My Hobbies</h3>
 

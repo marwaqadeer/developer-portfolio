@@ -1,8 +1,13 @@
+import { useState } from "react";
 import TechBadge from "./TechBadge";
 
 function ProjectCard({ project }) {
+
+    const [showDetails, setShowDetails] = useState(false);
+
     return (
         <div className="project-card">
+            
             {project.featured && (
                 <span className="featured-badge">Featured</span>
             )}
@@ -13,15 +18,42 @@ function ProjectCard({ project }) {
 
             <p>{project.description}</p>
 
-            <div className="tech-container">
-                {project.techStack.map((tech, index) => (
-                    <TechBadge key={index} tech={tech} />
-                ))}
-            </div>
+            <button onClick={() =>
+                setShowDetails(!showDetails)
+            }
+            >
+                {showDetails
+                    ? "Hide Details"
+                    : "view Details"}
+            </button>
 
-            <a href={project.link} target="_blank" rel="noreferrer">
+            {showDetails && (
+                <div className="project-details">
+                    <p>
+                        Technologies Used:
+                    </p>
+
+                    <div className="tech-container">
+                        {project.techStack.map(
+                            (tech, index) => (
+                                <TechBadge 
+                                   key={index}
+                                   tech={tech}
+                                />
+                            )
+                        )}
+                    </div>
+                </div>
+            )}
+
+            <a
+               href={project.link}
+               target="_blank"
+               rel="noreferrer"
+            >
                 View Project
             </a>
+
         </div>
     );
 }

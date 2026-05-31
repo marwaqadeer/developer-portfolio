@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Typewriter from "typewriter-effect";
 
 function Header({message}) {
     const quotes = [
@@ -7,15 +8,36 @@ function Header({message}) {
         "Every great developer starts as a beginner.",
     ];
 
-    const [randomQuote] = useState (
-    quotes[Math.floor(Math.random() * quotes.length)]
-    );
+    const [randomQuote] = useState (() => {
+        return quotes[
+            Math.floor(
+                Math.random() * quotes.length
+            )
+        ];
+    });
 
     return (
         <header className="header">
-            <h1>Hello, I'm Marwa 👋</h1>
+            
+            <h1>
+                <Typewriter 
+                   options={{
+                    strings: [
+                        "Hello, I'm Marwa 👋",
+                        "Frontend Developer",
+                        "React Learner"
+                    ],
+                    autoStart: true,
+                    loop: true,
+                   }}
+                />
+            </h1>
+
             <p>{message}</p>
-            <blockquote>"{randomQuote}"</blockquote>
+
+            <blockquote>
+                "{randomQuote}"
+            </blockquote>
         </header>
     );
 }

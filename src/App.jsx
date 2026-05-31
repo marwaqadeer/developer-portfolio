@@ -1,11 +1,58 @@
+import { useState, useEffect } from "react";
+
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Profile from "./components/Profile";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
+import ThemeToggle from "./components/ThemeToggle";
+import Skills from "./components/Skills";
+import ContactForm from "./components/ContactForm";
+import FeedbackWall from "./components/FeedbackWall";
+import ProjectUpdates from "./components/ProjectUpdates";
 
 function App() {
+  
+  const [theme, setTheme] = useState(() =>
+    localStorage.getItem("theme") || "light"
+  );
+  
+  //NEW: Scroll progress state
+  const [scroll, setScroll] = useState(0);
+
+  useEffect(() => {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  //NEW: Scroll progress effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const total = 
+        document.documentElement.scrollHeight - 
+        window.innerHeight;
+
+        const current = window.scrollY;
+
+        const percent = 
+          (current / total) * 100;
+        
+        setScroll(percent);
+    };
+
+    window.addEventListener(
+      "scroll",
+      handleScroll
+    );
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+  }, []);
+
   const welcomeMessage = "Welcome to my developer portfolio built with React!";
 
   const profileData = {
@@ -47,9 +94,23 @@ function App() {
 
   return (
     <div>
+
+      {/* NEW: Scroll Progress Bar */}
+      <div 
+        className="scroll-bar"
+        style={{
+          width: `${scroll}%`
+        }}
+    />
+    
       <Navbar />
 
-      <Header message={"Welcome to my portfolio"} />
+      <ThemeToggle
+        theme={theme}
+        setTheme={setTheme}
+      />
+
+      <Header message={welcomeMessage} />
 
       <Profile 
       name={profileData.name}
@@ -60,7 +121,15 @@ function App() {
 
       <About />
 
+      <Skills />
+
       <Projects projects={projects} />
+
+      <ProjectUpdates />
+
+      <ContactForm />
+
+      <FeedbackWall />
 
       <Footer />
     </div>
