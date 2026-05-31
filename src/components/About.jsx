@@ -14,7 +14,7 @@ function About () {
     ];
 
     return (
-        <section className="about">
+        <section className="about" id="about">
             <h2>About Me</h2>
 
             <p>I am a BBA student who is also interested in learning coding. I enjoy exploring how websites and applications are built and I am currently improving my skills in frontend development. My goal is to become more confident in programming and build modern, responsive web applications using React.</p>

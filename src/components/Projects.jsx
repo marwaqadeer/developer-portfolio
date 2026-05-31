@@ -13,7 +13,7 @@ function Projects({ projects }) {
            );
 
     return (
-        <section className="projects">
+        <section className="projects" id="projects">
 
             <h2>My Projects</h2>
 

@@ -311,8 +311,12 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 6px;
+  height: 5px;
   background: #2563eb;
   z-index: 9999;
   transition: width 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
 }

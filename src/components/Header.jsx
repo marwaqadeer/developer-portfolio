@@ -17,8 +17,8 @@ function Header({message}) {
     });
 
     return (
-        <header className="header">
-            
+        <header className="header" id="home">
+
             <h1>
                 <Typewriter 
                    options={{
