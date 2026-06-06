@@ -1,41 +1,31 @@
 import { useState, useEffect } from "react";
 
 import Navbar from "./components/Navbar";
-import Header from "./components/Header";
-import Profile from "./components/Profile";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Footer from "./components/Footer";
 import ThemeToggle from "./components/ThemeToggle";
-import Skills from "./components/Skills";
-import ContactForm from "./components/ContactForm";
-import FeedbackWall from "./components/FeedbackWall";
-import ProjectUpdates from "./components/ProjectUpdates";
+
+import { Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import AboutPage from "./pages/AboutPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ContactPage from "./pages/ContactPage";
+import ProjectDetails from "./pages/ProjectDetails";
+import NotFound from "./pages/NotFound";
 
 function App() {
   
-  const [theme, setTheme] = useState(() =>
-    localStorage.getItem("theme") || "light"
-  );
-  
-  //NEW: Scroll progress state
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
-    document.body.className = theme;
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  //NEW: Scroll progress effect
-  useEffect(() => {
     const handleScroll = () => {
+
       const total = 
         document.documentElement.scrollHeight - 
         window.innerHeight;
 
-        const current = window.scrollY;
+      const current = window.scrollY;
 
-        const percent = 
+      const percent = 
           (current / total) * 100;
         
         setScroll(percent);
@@ -52,15 +42,6 @@ function App() {
         handleScroll
       );
   }, []);
-
-  const welcomeMessage = "Welcome to my developer portfolio built with React!";
-
-  const profileData = {
-    name: "Marwa Qadeer",
-    title: "BBA Student & Aspiring Frontend Developer",
-    bio: "I enjoy building responsive and user-friendly websites using modern web technologies. I am passionate about learning new skills and improving my development abilities every day.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400",
-  };
 
   const projects = [
     {
@@ -95,7 +76,6 @@ function App() {
   return (
     <div>
 
-      {/* NEW: Scroll Progress Bar */}
       <div 
         className="scroll-bar"
         style={{
@@ -105,33 +85,50 @@ function App() {
     
       <Navbar />
 
-      <ThemeToggle
-        theme={theme}
-        setTheme={setTheme}
-      />
+      <ThemeToggle />
 
-      <Header message={welcomeMessage} />
+      <Routes>
+        
+        <Route 
+          path="/"
+          element={<Home />}
+        />
 
-      <Profile 
-      name={profileData.name}
-      title={profileData.title}
-      bio={profileData.bio}
-      image={profileData.image}
-      />
+        <Route
+          path="/about"
+          element={<AboutPage />}
+        />
 
-      <About />
+        <Route 
+          path="/projects"
+          element={
+            <ProjectsPage
+              projects={projects}
+            />
+          }
+        />
 
-      <Skills />
+        <Route 
+          path="/projects/:id"
+          element={
+            <ProjectDetails
+              projects={projects}
+            />
+          }
+        />
 
-      <Projects projects={projects} />
+        <Route 
+          path="/contact"
+          element={<ContactPage />}
+        />
 
-      <ProjectUpdates />
+        <Route 
+          path="*"
+          element={<NotFound />}
+        />
 
-      <ContactForm />
-
-      <FeedbackWall />
-
-      <Footer />
+      </Routes>
+      
     </div>
   );
 }

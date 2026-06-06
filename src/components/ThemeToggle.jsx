@@ -1,4 +1,11 @@
-function ThemeToggle({ theme, setTheme }) {
+import { useContext } from "react";
+import ThemeContext from "../context/ThemeContext";
+
+function ThemeToggle() {
+
+    const { theme, setTheme } =
+       useContext(ThemeContext);
+       
     return (
         <div className="theme-toggle">
             <button
