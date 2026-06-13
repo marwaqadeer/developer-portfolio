@@ -19,7 +19,18 @@ function About () {
 
             <p>I am a BBA student who is also interested in learning coding. I enjoy exploring how websites and applications are built and I am currently improving my skills in frontend development. My goal is to become more confident in programming and build modern, responsive web applications using React.</p>
 
-            {/* Avatar Reaction Section */}
+        <div className="about-highlights">
+            <h3>My Career Goal</h3>
+            <p>
+                I am working toward becoming a Frontend Developer and building accessible, responsive applications using React.
+            </p>
+
+            <h3>My Work Philosophy</h3>
+            <p>
+                I believe continuous learning, consistency, and problem-solving are the keys to becoming a better developer.
+            </p>
+        </div>
+
             <div className="avatar-section">
                 <h3>{emoji}</h3>
 

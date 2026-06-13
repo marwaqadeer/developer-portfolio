@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FeedbackCard from "./FeedbackCard";
 
 function FeedbackWall() {
 
@@ -39,7 +40,7 @@ function FeedbackWall() {
         <section className="feedback-wall">
 
             <h2>
-                Vistior Feedback
+                Visitor Feedback
             </h2>
 
             <form
@@ -114,34 +115,10 @@ function FeedbackWall() {
 
             {feedbacks.map(
                 (feedback) => (
-
-                    <div 
+                    <FeedbackCard
                        key={feedback.id}
-                       className="feedback-card"
-                    >
-
-                        <h4>
-                            {feedback.name}
-                        </h4>
-
-                        <p>
-                            {"⭐".repeat(
-                                feedback.rating
-                            )}
-                        </p>
-
-                        {feedback.rating ===
-                            5 && (
-                                <span className="featured-badge">
-                                    🌟 Featured
-                                </span>
-                            )}
-
-                            <p>
-                                {feedback.comment}
-                            </p>
-
-                    </div>
+                       feedback={feedback}
+                    />
                 )
             )}
         </section>

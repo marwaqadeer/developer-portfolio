@@ -25,11 +25,13 @@ function ProjectCard({ project }) {
     return (
         <div className="project-card">
             
-            {project.featured && (
-                <span className="featured-badge">
-                    {project.featured ? "Featured" : "Project"}
+                <span className={`status-badge ${project.status}`}>
+                    {project.status === "featured"
+                        ? "Featured"
+                        : project.status === "completed"
+                        ? "Completed"
+                        : "In Progress"}
                 </span>
-            )}
 
             <img 
                src={project.image || "https://via.placeholder.com/400"} 
@@ -40,8 +42,10 @@ function ProjectCard({ project }) {
 
             <p>{project.description}</p>
 
-            <button onClick={() =>
-                setShowDetails(!showDetails)
+            <button 
+                aria-expanded={showDetails}
+                onClick={() =>
+                    setShowDetails(!showDetails)
             }
             >
                 {showDetails
@@ -73,11 +77,29 @@ function ProjectCard({ project }) {
                         )}
                     </div>
 
-                    <div className="progress-bar">
+                    <div
+                       className="progress-bar"
+                       role="progressbar"
+                       aria-label={`${project.name} progress`}
+                       aria-valuenow={
+                        project.status === "featured"
+                          ? 90 
+                          : project.status === "completed"
+                          ? 60
+                          : 75 
+                       }
+                       aria-valuemin="0"
+                       aria-valuemax="100"
+                    >
                         <div
                             className="progress"
                             style={{
-                                width: project.featured ? "90%" : "60%"
+                                width:  
+                                   project.status === "featured"
+                                     ? "90%" 
+                                     : project.status === "completed"
+                                     ? "60%"
+                                     : "75%"
                             }}
                         />
                 </div>

@@ -10,7 +10,7 @@ function Navbar() {
 
                 <li>
                     <NavLink
-                       to="/"
+                       to="/" end
                        className={({ isActive }) =>
                          isActive ? "active" : ""
                          }
@@ -51,7 +51,7 @@ function Navbar() {
                         Contact
                     </NavLink>
                 </li>
-                
+
             </ul>
         </nav>
     );

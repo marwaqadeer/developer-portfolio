@@ -1,16 +1,31 @@
-# React + Vite
+# Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Demo
 
-Currently, two official plugins are available:
+https://developer-portfolio-six-eta.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## GitHub Repository
 
-## React Compiler
+https://github.com/marwaqadeer/developer-portfolio
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React Router Navigation
+- Dynamic Project Pages
+- Context API
+- Theme Toggle
+- Favorites System
+- Contact Form Validation
+- Local Storage Persistence
+- Feedback Wall
+- Live Preview
+- Responsive Design
+- Search & Filter Projects
+
+---
+
+## Reflection
+
+This portfolio reflects my growth from learning basic React concepts to building a complete multi-page application. I learned how to use React Router, Context API, localStorage, reusable components, and responsive design techniques. The biggest challenge was understanding dynamic routing and managing shared state across components. My favorite feature is the interactive projects section with favorites, filters, and project details pages. In the future, I would like to connect real APIs, improve animations, and add backend functionality for storing contact messages and feedback.

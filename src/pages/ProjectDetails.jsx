@@ -33,6 +33,32 @@ function ProjectDetails({ projects }) {
                 ))}
             </ul>
 
+            <h4>Problem</h4>
+
+            <p>
+                Users needed an easier way to manage their workflow.
+            </p>
+
+            <h4>Solution</h4>
+
+            <p>
+                Built a responsive application using modern frontend technologies.
+            </p>
+
+            <h4>Outcome</h4>
+
+            <p>
+                Improved usability and organization.
+            </p>
+
+            <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+            >
+                GitHub Repository
+            </a>
+
         </div>
     );
 }

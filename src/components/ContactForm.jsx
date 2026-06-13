@@ -23,7 +23,6 @@ function ContactForm() {
 
     const savedData = !!localStorage.getItem("contactForm");
 
-    // Auto-save to localStorage 
     useEffect(() => {
         localStorage.setItem(
             "contactForm",
@@ -31,7 +30,6 @@ function ContactForm() {
         );
     }, [formData]);
 
-    // Debounched email validation (400ms)
     useEffect(() => {
         const timer =
           setTimeout(() => {
@@ -54,7 +52,6 @@ function ContactForm() {
 
     }, [formData.email]);
 
-    // Handle input changes
     const handleChange = (e) => {
 
         setFormData({
@@ -64,7 +61,6 @@ function ContactForm() {
         });
     };
 
-    // Submit form
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -84,7 +80,6 @@ function ContactForm() {
 
         setErrors(newErrors);
 
-        // SUCCESS BLOCK
         if (
             Object.keys(newErrors)
               .length === 0 &&
@@ -93,7 +88,6 @@ function ContactForm() {
 
             setSuccess(true);
 
-            // CONFETTI GOES HERE 
             confetti({
                 particleCount: 100,
                 spread: 70,
@@ -121,24 +115,31 @@ function ContactForm() {
 
             <h2>Contact Me</h2>
 
-            {/* saved data hint */}
+            <p>
+                I'm open to internships, collaborations,
+                and freelance opportunities.
+            </p>
+
             {savedData && (
                 <p className="saved-hint">
                     You have unsent message data saved!
                 </p>
             )}
 
-            {/* success toast */}
             {success && (
                 <div className="success-toast">
                     Message Sent Successfully!
                 </div>
             )}
 
-            {/* form */}
             <form onSubmit={handleSubmit}>
 
+                <label htmlFor="name">
+                    Name
+                </label>
+
                 <input 
+                  id="name"
                   type="text"
                   name="name"
                   placeholder="Name"
@@ -152,7 +153,12 @@ function ContactForm() {
                     </p>
                 )}
 
+                <label htmlFor="email">
+                    Email
+                </label>
+
                 <input
+                  id="email"
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -172,7 +178,12 @@ function ContactForm() {
                     </p>
                   )}
 
+                  <label htmlFor="message">
+                       Message
+                  </label>
+
                   <textarea
+                    id="message"
                     name="message"
                     placeholder="Message"
                     value={formData.message}
@@ -191,7 +202,6 @@ function ContactForm() {
 
             </form>
 
-            {/* Live preview component */}
             <LivePreview 
                 name={formData.name}
                 email={formData.email}

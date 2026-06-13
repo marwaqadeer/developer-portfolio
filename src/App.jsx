@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import Navbar from "./components/Navbar";
 import ThemeToggle from "./components/ThemeToggle";
+import ProjectUpdates from "./components/ProjectUpdates";
+import Footer from "./components/Footer";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -51,7 +53,7 @@ function App() {
       description: "A responsive invoice management app for freelancers to manage clients and invoices.",
       link: "https://github.com/marwaqadeer/freelance-invoice-app",
       techStack: ["HTML", "CSS", "JavaScript"],
-      featured: true,
+      status: "featured",
     },
     {
       id: 2, 
@@ -60,7 +62,7 @@ function App() {
       description: "A weather application using API integration to display live weather updates.",
       link: "https://github.com/marwaqadeer/weather-dashboard",
       techStack: ["React", "CSS", "API"],
-      featured: false,
+      status: "completed",
     },
     {
       id: 3, 
@@ -69,7 +71,7 @@ function App() {
       description: "A productivity app for managing daily tasks and improving organization.",
       link: "https://github.com/marwaqadeer/task-manager",
       techStack: ["React", "JavaScript", "CSS"],
-      featured: true,
+      status: "progress",
     },
   ];
 
@@ -86,7 +88,8 @@ function App() {
       <Navbar />
 
       <ThemeToggle />
-
+      
+    <main>
       <Routes>
         
         <Route 
@@ -128,6 +131,11 @@ function App() {
         />
 
       </Routes>
+    </main>
+
+      <ProjectUpdates />
+
+      <Footer />
       
     </div>
   );

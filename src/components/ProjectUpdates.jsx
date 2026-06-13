@@ -10,7 +10,7 @@ function ProjectUpdates() {
         const interval =
         setInterval(() => {
             setUpdates((prev) => [
-                ...prev,
+                ...prev.slice(-9),
                 `Update received at ${new Date().toLocaleTimeString()}`
             ]);
         }, 15000);
